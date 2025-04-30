@@ -25,7 +25,7 @@ A Python tool that converts WebVTT (.vtt) caption files with speaker annotations
 1. Clone the repository:
    ```bash
    git clone https://github.com/CTI-Buddy/VTTCleaner.git
-   cd vtt-to-csv
+   cd VTTCleaner
    ```
 
 2. Install dependencies:
