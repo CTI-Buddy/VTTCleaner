@@ -1,58 +1,112 @@
+```markdown
 # VTTCleaner - a VTT to CSV Converter
 
-A simple Python tool to convert WebVTT (.vtt) files with speaker annotations into a structured CSV format.
+![Python Version](https://img.shields.io/badge/python-3.6%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Pandas](https://img.shields.io/badge/pandas-1.0%2B-orange)
+
+A Python tool that converts WebVTT (.vtt) caption files with speaker annotations into clean, structured CSV format for easy analysis and processing.
 
 ## Features
 
-- Extracts speaker names, timestamps, and dialogue from WebVTT files
-- Cleans up formatting artifacts (like trailing IDs and tags)
-- Outputs a well-structured CSV file with columns: Timestamp, Speaker, Text
-- Preserves the original file's timestamp and speaker relationships
-
-## Requirements
-
-- Python 3.x
-- pandas library
+- 🎤 Extracts speaker names, timestamps, and dialogue from WebVTT files
+- 🧹 Cleans formatting artifacts (trailing IDs, tags, etc.)
+- 📊 Outputs structured CSV with columns: Timestamp, Speaker, Text
+- ⏱ Preserves original timestamp-speaker relationships
+- 🚀 Simple command-line interface
+- 💾 Creates output in the same directory as input file
 
 ## Installation
 
-1. Clone or download this repository
-2. Install the required dependencies:
+### Prerequisites
+- Python 3.6 or higher
+- pip package manager
+
+### Setup
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/CTI-Buddy/VTTCleaner.git
+   cd vtt-to-csv
+   ```
+
+2. Install dependencies:
    ```bash
    pip install pandas
-Usage
-Run the script:
+   ```
 
-bash
-python vtt_to_csv.py
-When prompted, enter the full path to your .vtt file
+## Usage
 
-Example: C:\Users\YourName\Documents\transcript.vtt or /home/username/transcript.vtt
+### Basic Command
+```bash
+python VTTCleaner.py
+```
 
-The script will generate a CSV file in the same directory as your input file
+When prompted, enter the full path to your .vtt file:
+```
+Please enter the full path to your .vtt file: /path/to/your/file.vtt
+```
 
-Output format: [original_filename]_formatted.csv
-
-Input File Format
-The script expects WebVTT files with speaker annotations in the format:
-
+### Example
+Input file `meeting.vtt`:
+```
 WEBVTT
 
 00:00:00.000 --> 00:00:02.340
-<v Speaker Name>This is what the speaker said
-Output Format
-The generated CSV will contain three columns:
+<v John Doe>Let's begin the meeting
+00:00:02.340 --> 00:00:05.670
+<v Jane Smith>I agree with the proposal
+```
 
-Timestamp: The time range from the VTT file
+Output file `meeting_formatted.csv`:
+```
+Timestamp,Speaker,Text
+"00:00:00.000 --> 00:00:02.340","John Doe","Let's begin the meeting"
+"00:00:02.340 --> 00:00:05.670","Jane Smith","I agree with the proposal"
+```
 
-Speaker: The identified speaker
+## Input Format Requirements
 
-Text: The cleaned dialogue text
+The script processes WebVTT files with speaker annotations in the format:
+```
+<v Speaker Name>Spoken text here
+```
 
-Limitations
-Currently only processes speaker tags in the format <v Speaker Name>
+## Output Format
 
-May need adjustment for VTT files with significantly different formatting
+The generated CSV contains three columns:
+| Column | Description |
+|--------|-------------|
+| Timestamp | Original time range (e.g., "00:00:00.000 --> 00:00:02.340") |
+| Speaker | Identified speaker name |
+| Text | Cleaned dialogue text |
 
-License
-This project is open-source and available under the MIT License.
+## Advanced Options
+
+For batch processing, you can modify the script to:
+1. Process all .vtt files in a directory
+2. Accept command-line arguments instead of prompts
+3. Customize output format
+
+(Contributions welcome for these enhancements!)
+
+## Contributing
+
+We welcome contributions! Please:
+1. Fork the repository
+2. Create a feature branch
+3. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Support
+
+For issues or feature requests, please [open an issue](https://github.com/CTI-Buddy/VTTCleaner/issues).
+
+
+
+Would you like me to make any adjustments to this README? For example:
+- Add a screenshot of the tool in action?
+- Include more detailed development instructions?
+- Add a FAQ section?
